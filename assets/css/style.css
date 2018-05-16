@@ -1,0 +1,56 @@
+body {
+    background-image: url("../images/disney\ 18-12-48-927.jpg");
+    background-repeat: no-repeat;
+    background-size: auto;
+}
+#container h1 {
+    font-size: 50px;
+    border-bottom: 1px solid;
+}
+#wrapper {
+    text-align: center;
+    font-family: 'Khand', sans-serif;
+    width: 600px;
+    height: 550px;
+    margin-top: 70px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: white;
+    padding: 10px 50px 50px 50px;
+    border-radius: 50px;
+    border: solid 2px white;
+}
+.top {
+    border-bottom: solid 1px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    height: 60px;
+}
+#questions {
+    font-size: 25px;
+}
+#time {
+    font-size: 20px;
+}
+
+.buttons {
+   margin: auto;
+   padding-top: 20px;
+   padding-bottom: 30px;
+   border-bottom: solid 1px;
+}
+
+.choices {
+    border-radius: 30px;
+    border: solid 1px;
+    background-color: lightblue;
+    width: 500px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#start:hover, #chc-1:hover, #chc-2:hover, #chc-3:hover, #chc-4:hover {
+    background-color: royalblue;
+    cursor: pointer;
+}
