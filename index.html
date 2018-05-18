@@ -1,36 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Disney Trivia Game</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Khand" rel="stylesheet">
+	<title>Trivia Game</title>
+		
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-</head>
-<body>
-    <div id = "wrapper">
-        <div id ="container">
-            <h1>Disney Animated Trivia Game</h1>
+    <link href="https://fonts.googleapis.com/css?family=Khand" rel="stylesheet">
 
-            <div id="game">
-                <div id="top">
-                    <div id = "questions"></div>
-                    <div id="time">You have <span id="timer">30</span> seconds</div>
-                    <div class = "choices" id = "start"><p>START</p></div>
+</head>
+
+<body>
+    <div id="wrap">
+		<div class="header">
+			<h1>Disney Animated Trivia Game</h1>
+		</div>
+			<div class="container-fluid start">
+				<div class="row">
+                    <div class="row">
+                            <div class="timerSection">
+                            </div>	
+                            
+                        </div>
+                    <div class="trivSection">	
+                        <button type="button" class="btn-default btn-lg btn-primary startBtn">START</button>
+                    </div>	
+                        <br><br>	
                 </div>
-                <div class = "buttons">
-                    <div class = "choices" id = "chc-1"> <p>A. <span id="opt-1"></span> </p></div>
-                    <div class = "choices" id = "chc-2"> <p>B. <span id="opt-2"></span> </p></div>
-                    <div class = "choices" id = "chc-3"> <p>C. <span id="opt-3"></span> </p></div>
-                    <div class = "choices" id = "chc-4"> <p>D. <span id="opt-4"></span> </p></div>
-                </div>
+
+
+					<div class="col-md-2 col-2">	
+					</div>	
+				</div>
             </div>
 
-        </div>
     </div>
-    <script src = "assets/javascript/questions.js"></script>
-    <script src = "assets/javascript/app.js"></script>
+
+    <script type="text/javascript" src="assets/javascript/questions.js"></script>
+    <script type="text/javascript" src="assets/javascript/app.js"></script>
 </body>
 </html>

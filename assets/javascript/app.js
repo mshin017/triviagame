@@ -1,79 +1,190 @@
-//PSEUDO CODE
-// Variables showImage will hold the setInterval when we start the slideshow
-// var showImage;
-//count will keep track of the index of the current display
-// var count = 0;
-var chosenQuestion = questionArray[Math.floor(Math.random() * questionArray.length)];
-var question = chosenQuestion.questions;
-var choices = chosenQuestion.choices;
-var correct = chosenQuestion.correct;
-    console.log(chosenQuestion);
-    console.log(question);
-    console.log(choices);
-    console.log(correct);
-
-//-----------------------------
-
-window.onload=function(){
-    $(".buttons").hide();
-    $("#time").hide();
-}
-
-$("#start").click(start)
-
-function start() {
-    $("#start").hide(); $(".buttons").show(); $("#time").show();
-    displayQuestion();
-    displayChoices();
-}
-
-function displayQuestion(){
-    $("#questions").html("<p> Q: " + question + "</p>")
-    timer();
-}
-function displayChoices(){
-    $("#opt-1").append(choices[0]);
-    $("#opt-2").append(choices[1]);
-    $("#opt-3").append(choices[2]);
-    $("#opt-4").append(choices[3]);
-
-}
+var trivTime = 0;
+var rightCount = 0;
+var wrongCount = 0;
+var qACount = 1;
+var timer = '';
 
 
-// function nextQuestionInRound () {
-//     chosenQuestion = questionArray[Math.floor(Math.random() * questionArray.length)];
-//     question = chosenQuestion.questions;
-//     choices = chosenQuestion.choices;
-//     correct = chosenQuestion.correct;
-// }
-// nextQuestionInRound ();
+var start = function(){
+	$('.startBtn').on('click',function(){
+		$('.trivSection').empty();
+		createQuestions();
+	});
+};
 
-// function displayQuestion () {
-//     timer();
-//     $("#questions").html("<p> Q: " + questions[0] + "</p>");
-//     $("#opt-1").append(choice1[0]);
-//     $("#opt-2").append(choice2[0]);
-//     $("#opt-3").append(choice3[0]);
-//     $("#opt-4").append(choice4[0]);
+var createQuestions = function(){
+    timerStart();
+    
+	var question = qA[qACount]['question'];
+	var newDiv = $('<div>');
+	newDiv.addClass('question');
+	newDiv.text(question);
+    $('.trivSection').append(newDiv);
+    
+	createAnswers();
+};
 
-// }
+var createAnswers = function(){
+	var answerLength = qA[qACount]['answers'].length;
+	for(var i = 0; i < answerLength;i++){
+		var answers = qA[qACount]['answers'][i];
+		var ansBtn = $('<button>');
+		ansBtn.addClass('answerBtn option');
+		ansBtn.attr('data-type',answers);
+		ansBtn.text(answers);
+		$('.trivSection').append(ansBtn);
+	}
+	// $(document).off('click','.answers',checkAnswer);
+	// $(document).on('click','.answers',checkAnswer);
+};
 
+var checkAnswer = function(){
 
-function timer () {  
-    var timeLeft=30;
-    var timer = setInterval(function(){
-        timeLeft--;
-        $("#timer").text(timeLeft);
-        if(timeLeft <= 0)
+	var userAnswer = $(this).data('type');
+	var correctAnswer = qA[qACount]['correct'];
+	var correctImg = qA[qACount]['imageUrl'];
+
+	var right = qA[qACount]['right'];
+    var wrong = qA[qACount]['wrong'];
+    
+    console.log(qACount);
+        if(userAnswer === correctAnswer){
+            rightCount++;
+            $('.trivSection').empty();
+            
+            var newImg = $('<img>');
+            newImg.attr('src',correctImg);
+            $('.trivSection').append(newImg);
+
+            var newDiv = $('<div>');
+            newDiv.addClass('rightAnswer');
+            newDiv.text(right);
+            $('.trivSection').append(newDiv);
+
             clearInterval(timer)
-    }, 1000);
+            
+            qACount++;
+            
+            if(qACount <= 3){
+                setTimeout(
+                    function(){
+                        $('.trivSection').empty();
+                        createQuestions();
+                        },3500);
+            }
+            else{
+                $('.trivSection').empty();
+                var newImg = $('<img>');
+                newImg.attr('src',correctImg);
+                $('.trivSection').append(newImg);
+
+                var newDiv = $('<div>');
+                newDiv.addClass('rightAnswer');
+                newDiv.text(right);
+                $('.trivSection').append(newDiv);
+                
+                clearInterval(timer)
+                setTimeout(gameOver, 3500);
+            }
+        }
+        else{
+            wrongCount++;
+
+            $('.trivSection').empty();
+            var newImg = $('<img>');
+            newImg.attr('src',correctImg);
+            $('.trivSection').append(newImg);
+            
+            var newDiv = $('<div>');
+            newDiv.addClass('wrongAnswer');
+            newDiv.text(wrong);
+            $('.trivSection').append(newDiv);
+            
+            clearInterval(timer)
+
+		qACount++;
+		
+		if(qACount <= 9){
+			setTimeout(function(){
+			$('.trivSection').empty();
+			createQuestions();
+			},3500);
+		}
+		else{
+			$('.trivSection').empty();
+			var newImg = $('<img>');
+            newImg.attr('src',correctImg);
+            $('.trivSection').append(newImg);
+        
+			var newDiv = $('<div>');
+			newDiv.addClass('wrongAnswer');
+			newDiv.text(wrong);
+			$('.trivSection').append(newDiv);
+
+			clearInterval(timer);
+			setTimeout(gameOver, 3500);
+		}
+	}
 }
-clearInterval();
+
+var timerStart = function(){ 
+	$('.timerSection').empty();
+	trivTime = 100;
+	var timeTag = $('<div>');
+	timeTag.addClass('time');
+    timeTag.addClass('progress');
+    
+	var progressBar = $('<div>');
+	progressBar.addClass('progress-bar');
+	progressBar.width(trivTime + '%');
+
+	$('.timerSection').append(timeTag);
+    $('.time').append(progressBar);	
+    
+    timer = setInterval(timeDecrement,100);
+    console.log(trivTime);
+
+};
+
+var timeDecrement = function(){ 
+	$('.progress-bar').width(trivTime + '%');
+	trivTime--;
+	if(trivTime === -10){
+		userAnswer = false;
+		clearInterval(timer);
+		checkAnswer();
+	}
+};
+
+var gameOver = function(){
+	$('.trivSection').empty();	$('.timerSection').empty();
+
+	var scoreDiv = $('<div>');
+	scoreDiv.addClass('score');
+	scoreDiv.html('Correct: ' + rightCount + '<br>' + 'Wrong: ' + wrongCount);
+	$('.trivSection').append(scoreDiv);
+
+	var gameOver = $('<div>');
+	gameOver.addClass('gameOver');
+	gameOver.text('Game Over! Play Again ?');
+	$('.trivSection').append(gameOver);
+
+	var newBtn = $('<button>');
+	newBtn.addClass('answerBtn resetBtn');
+	newBtn.text('Reset');
+	$('.trivSection').append(newBtn);
+
+	trivTime = 100;
+	qACount = 1;
+	rightCount = 0;
+	wrongCount = 0;
+
+	$('.resetBtn').on('click',function(){
+		$('.trivSection').empty()
+
+		createQuestions();
+	});
+}
 
 
-
-
-//function displayImage()
-//function nextImage()
-//function start()
-//function restart()
+start();

@@ -3,11 +3,11 @@ body {
     background-repeat: no-repeat;
     background-size: auto;
 }
-#container h1 {
+h1 {
     font-size: 50px;
     border-bottom: 1px solid;
 }
-#wrapper {
+#wrap {
     text-align: center;
     font-family: 'Khand', sans-serif;
     width: 600px;
@@ -20,37 +20,87 @@ body {
     border-radius: 50px;
     border: solid 2px white;
 }
-.top {
-    border-bottom: solid 1px;
-    margin-bottom: 10px;
-    padding-bottom: 10px;
-    height: 60px;
+col, row{
+    margin-left: 0px;
+
 }
-#questions {
+img{
+    width: 500;
+    height: 450;
+}
+
+.question, .answers, .rightAnswer, .wrongAnswer, .gameOver, .score{
+    padding: 15px;
     font-size: 25px;
-}
-#time {
-    font-size: 20px;
-}
-
-.buttons {
-   margin: auto;
-   padding-top: 20px;
-   padding-bottom: 30px;
-   border-bottom: solid 1px;
+    margin: 10px;
+    margin-top:5px;
 }
 
-.choices {
+.timerSection {
+    margin-top: 10px;
+}
+
+.startBtn, .resetBtn{
+    width: 300px;
+    margin-top: 135px;
+}
+.option{
+    float: left;
+    position: static;
+}
+
+.answerBtn { 
+    color: #FFFFFF; 
+    background-color: lightblue; 
+    border-color: #000000;
     border-radius: 30px;
     border: solid 1px;
     background-color: lightblue;
     width: 500px;
     margin-top: 10px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#start:hover, #chc-1:hover, #chc-2:hover, #chc-3:hover, #chc-4:hover {
-    background-color: royalblue;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: solid 1px;
+  
+  } 
+   
+  .answerBtn:hover, 
+  .answerBtn:focus, 
+  .answerBtn:active, 
+  .answerBtn.active, 
+  .open .dropdown-toggle.answerBtn { 
+    color: #FFFFFF; 
+    background-color: royalblue; 
+    border-color: #000000; 
     cursor: pointer;
-}
+  } 
+   
+  .answerBtn:active, 
+  .answerBtn.active, 
+  .open .dropdown-toggle.answerBtn { 
+    background-image: none; 
+  } 
+   
+  .answerBtn.disabled, 
+  .answerBtn[disabled], 
+  fieldset[disabled] .answerBtn, 
+  .answerBtn.disabled:hover, 
+  .answerBtn[disabled]:hover, 
+  fieldset[disabled] .answerBtn:hover, 
+  .answerBtn.disabled:focus, 
+  .answerBtn[disabled]:focus, 
+  fieldset[disabled] .answerBtn:focus, 
+  .answerBtn.disabled:active, 
+  .answerBtn[disabled]:active, 
+  fieldset[disabled] .answerBtn:active, 
+  .answerBtn.disabled.active, 
+  .answerBtn[disabled].active, 
+  fieldset[disabled] .answerBtn.active { 
+    background-color: lightblue; 
+    border-color: #000000; 
+  } 
+   
+  .answerBtn .badge { 
+    color: white; 
+    background-color: lightblue; 
+  }

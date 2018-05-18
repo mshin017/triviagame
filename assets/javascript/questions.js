@@ -1,169 +1,133 @@
-// Put links to image array 
-var images = [];
+// var images = [];
 
 
-
-var questionArray = [
-    {
-        questions: "Which Disney movie was the first to release a soundtrack? ",
-        choices: 
+var qA = {
+    1:{
+        question: "Which Disney movie was the first to release a soundtrack? ",
+        answers: 
             [
                 "Snow White and the Seven Dwarves",
                 "Sleeping Beauty", 
                 "Little Mermaid",
                 "Cinderella",
             ],
-        correct: "Snow White and the Seven Dwarves"
+        correct: "Snow White and the Seven Dwarves",
+        right: "Correct!",
+        wrong: "Incorrect!",
+        imageUrl: ["assets/images/snowwhite.gif"]
     },
-    {
-        questions: " Which easter egg is in every Disney Pixar movie? ",
-        choices: 
+    2:{
+        question: " Which easter egg is in every Disney Pixar movie? ",
+        answers: 
             [
                 "Mickey Mouse",
                 "Pizza Truck", 
                 "A113",
                 "Nemo",
             ],
-        correct: "A113"
+        correct: "A113",
+        right: "Correct!",
+        wrong: "Incorrect!",
+        imageUrl: ["assets/images/a113.jpg"]
     },
-    {
-        questions: "Which psychological disorder was named after a Disney character?",
-        choices: 
+    3:{
+        question: "Which psychological disorder was named after a Disney character?",
+        answers: 
             [
                 "Nemo",
                 "Bambi", 
                 "Pinocchio",
                 "Simba",
             ],
-        correct: "Bambi"
+        correct: "Bambi",
+        right: "Correct!",
+        wrong: "Incorrect!",
+        imageUrl: ["assets/images/bambi.gif"]
     },
-    {
-        questions: "Lady and the Tramp was inspired by real dog. What was the name of the dog?",
-        choices: 
+    4:{
+        question: "Lady and the Tramp was inspired by a real dog. What was the name of the dog?",
+        answers: 
             [
                 "Lady",
                 "Trump", 
                 "Walt",
                 "Dan",
             ],
-        correct: "Lady"
+        correct: "Lady",
+        right: "Correct!",
+        wrong: "Incorrect!",
+        imageUrl: ["assets/images/ladytramp.gif"]
     },
-    {
-        questions: "Which among these Disney films have both parents present and alive during the course of the movie??",
-        choices: 
+    5:{
+        question: "Which among these Disney films have both parents present and alive during the course of the movie??",
+        answers: 
             [
                 "Peter Pan",
                 "Hunchback of Notre Dame", 
                 "Treasure Planet",
                 "Toy Story",
             ],
-        correct: "Peter Pan"
+        correct: "Peter Pan",
+        right: "Correct!",
+        wrong: "Incorrect!",
+        imageUrl: ["assets/images/peterpan.gif"]
     },
-    {
-        questions: "In Monsters Inc., what is Boo's real name?",
-        choices: 
+    6:{
+        question: "In Monsters Inc., what is Boo's real name?",
+        answers: 
             [
                 "Daisy",
                 "Charlotte", 
                 "Jane",
                 "Mary",
             ],
-        correct: "Mary"
+        correct: "Mary",
+        right: "Correct!",
+        wrong: "Incorrect!",
+        imageUrl: ["assets/images/boo.gif"]
     },
-    {
-        questions: "Which of these princesses are not officially a Disney princess? ",
-        choices: 
+    7:{
+        question: "Which of these princesses are not officially a Disney princess? ",
+        answers: 
             [
                 "Anna",
                 "Tiana", 
                 "Merida",
                 "Mulan",
             ],
-        correct: "Anna"
+        correct: "Anna",
+        right: "Correct!",
+        wrong: "Incorrect!",
+        imageUrl: ["assets/images/anna.gif"]
     },
-    {
-        questions: "How many types of animals were featured in Zootopia?",
-        choices: 
+    8:{
+        question: "How many types of animals were featured in Zootopia?",
+        answers: 
             [
                 "59",
                 "64", 
                 "83",
                 "96",
             ],
-        correct: "64"
+        correct: "64",
+        right: "Correct!",
+        wrong: "Incorrect!",
+        imageUrl: ["assets/images/zootopia.gif"]
 
     },
-    {
-        questions: "Which of these movies are NOT going to be a live action movie? ",
-        choices: 
+    9:{
+        question: "Which of these movies are NOT going to be a live action movie? ",
+        answers: 
             [
                 "Mulan",
                 "Lion King", 
                 "Tangled",
                 "Aladdin",
             ],
-        correct: "Tangled"
+        correct: "Tangled",
+        right: "Correct!",
+        wrong: "Incorrect!",
+        imageUrl: ["assets/images/tangled.gif"]
         
     },
-]
-
-// var questions = [
-//     "Which Disney movie was the first to release a soundtrack?",
-//     "Which easter egg is in every Disney Pixar movie?",
-//     "Which psychological disorder was named after a Disney character?",
-//     "Lady and the Tramp was inspired by real dog. What was the name of the dog?",
-//     "Which among these Disney films have both parents present and alive during the course of the movie?",
-//     "In Monsters Inc., what is Boo's real name?",
-//     "Which of these princesses are not officially a Disney princess? ",
-//     "How many types of animals were featured in Zootopia?",
-//     "Which of these movies are NOT going to be a live action movie?",
-// ]
-
-// var choice1 = [
-//     "Snow White and the Seven Dwarves",
-//     "Mickey Mouse",
-//     "Nemo",
-//     "Lady ",
-//     "Peter Pan",
-//     "Daisy",
-//     "Anna",
-//     "9",
-//     "Mulan",
-// ]
-
-// var choice2 = [
-//     "Sleeping Beauty",
-//     "Pizza Truck",
-//     "Bambi",
-//     "Tramp",
-//     "Hunchback of Notre Dame",
-//     "Charlotte",
-//     "Tiana",
-//     "64",
-//     "Lion King",
-// ]
-
-// var choice3 = [
-//     "Little Mermaid",
-//     "A113",
-//     "Pinocchio",
-//     "Walt",
-//     "Treasure Planet",
-//     "Jane",
-//     "Merida",
-//     "83",
-//     "Tangled",
-// ]
-
-// var choice4 = [ 
-//     "Cinderella",
-//     "Nemo",
-//     "Simba",
-//     "Dan",
-//     "Toy Story",
-//     "Mary",
-//     "Mulan",
-//     "96",
-//     "Aladdin",
-
-// ]
+}
