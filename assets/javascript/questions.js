@@ -1,6 +1,3 @@
-// var images = [];
-
-
 var qA = {
     1:{
         question: "Which Disney movie was the first to release a soundtrack? ",

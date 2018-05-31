@@ -33,9 +33,10 @@ var createAnswers = function(){
 		ansBtn.attr('data-type',answers);
 		ansBtn.text(answers);
 		$('.trivSection').append(ansBtn);
+
 	}
-	// $(document).off('click','.answers',checkAnswer);
-	// $(document).on('click','.answers',checkAnswer);
+	
+
 };
 
 var checkAnswer = function(){
@@ -47,7 +48,8 @@ var checkAnswer = function(){
 	var right = qA[qACount]['right'];
     var wrong = qA[qACount]['wrong'];
     
-    console.log(qACount);
+	console.log(qACount);
+	$(".answerBtn").on("click", function (){
         if(userAnswer === correctAnswer){
             rightCount++;
             $('.trivSection').empty();
@@ -102,15 +104,15 @@ var checkAnswer = function(){
             
             clearInterval(timer)
 
-		qACount++;
+			qACount++;
 		
-		if(qACount <= 9){
+			if(qACount <= 9){
 			setTimeout(function(){
 			$('.trivSection').empty();
 			createQuestions();
 			},3500);
-		}
-		else{
+			}
+			else{
 			$('.trivSection').empty();
 			var newImg = $('<img>');
             newImg.attr('src',correctImg);
@@ -123,9 +125,10 @@ var checkAnswer = function(){
 
 			clearInterval(timer);
 			setTimeout(gameOver, 3500);
+			}
 		}
-	}
-}
+	});
+};
 
 var timerStart = function(){ 
 	$('.timerSection').empty();
@@ -188,3 +191,4 @@ var gameOver = function(){
 
 
 start();
+
